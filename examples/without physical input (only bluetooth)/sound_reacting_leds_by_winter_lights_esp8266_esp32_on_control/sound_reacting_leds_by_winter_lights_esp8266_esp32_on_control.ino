@@ -89,9 +89,9 @@ const int useSensorValues = true;                         // @EB
 //
 // setup pins
 //
-int numleds=500;
+
 int leftPin = A0, rightPin = A0;                          // left audio in on analog 0, right on analog 1
-//int brightnessPin = A0, sensitivityPin = A0;              // potentiometers for brightness and sensitivity on analog 4 and 5
+int brightnessPin = A0, sensitivityPin = A0;              // potentiometers for brightness and sensitivity on analog 4 and 5
 int leftStripPin = 12;                                     // DIN of left led strip on digital pin 5
 int rightStripPin = 6;                                    // DIN of right led strip on digital pin 6
 int showPeaksPin = 9;                                     // switch to toggle peaks on or off on digital pin 7 (7, 9 for box version)
@@ -190,7 +190,7 @@ int useSelectButton2 = true;                              // set to false if no 
 #elif defined (led_rhombus_160_ps)
   //settings for a 160 led rhombus - pulsating and spinning settings
 
-  int stripNumOfLeds = numleds;                                 // the total number of leds
+  int stripNumOfLeds = 5000;                                 // the total number of leds
   int stripsOn2Pins = false;                                // set to true if the LED strips or rings are connected to 2 input pins
   uint32_t stripColor[2501];                                  // half of the number of leds + 1
   int displayMiddleLed = true;                              // display the middle led (blue). set to true for one strip, false for two strips or rings
