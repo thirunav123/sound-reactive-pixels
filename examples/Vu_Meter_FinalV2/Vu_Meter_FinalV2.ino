@@ -6,7 +6,7 @@
     #include <SoftwareSerial.h>
     #define N_PIXELS  72  // Number of pixels in strand
     #define N_PIXELS_HALF (N_PIXELS/2)
-    #define MIC_PIN   A5  // Microphone is attached to this analog pin
+    #define MIC_PIN   A4  // Microphone is attached to this analog pin
     #define LED_PIN    6  // NeoPixel LED strand is connected to this pin
     #define SAMPLE_WINDOW   10  // Sample window for average level
     #define PEAK_HANG 24 //Time of pause before peak dot falls
@@ -493,9 +493,10 @@ void vu() {
   int      n, height;
   
   n   = analogRead(MIC_PIN);                        // Raw reading from mic 
-  n   = abs(n - 512 - DC_OFFSET); // Center on zero
-  n   = (n <= NOISE) ? 0 : (n - NOISE);             // Remove noise/hum
-  lvl = ((lvl * 7) + n) >> 3;    // "Dampened" reading (else looks twitchy)
+  Serial.println(n);
+  //n   = abs(n - 512 - DC_OFFSET); // Center on zero
+  //n   = (n <= NOISE) ? 0 : (n - NOISE);             // Remove noise/hum
+  lvl = n;//((lvl * 7) + n) >> 3;    // "Dampened" reading (else looks twitchy)
  
   // Calculate bar height based on dynamic min/max levels (fixed point):
   height = TOP * (lvl - minLvlAvg) / (long)(maxLvlAvg - minLvlAvg);
@@ -572,9 +573,10 @@ void vu1() {
  
  
   n   = analogRead(MIC_PIN);                        // Raw reading from mic 
-  n   = abs(n - 512 - DC_OFFSET); // Center on zero
-  n   = (n <= NOISE) ? 0 : (n - NOISE);             // Remove noise/hum
-  lvl = ((lvl * 7) + n) >> 3;    // "Dampened" reading (else looks twitchy)
+  Serial.println(n);
+  //n   = abs(n - 512 - DC_OFFSET); // Center on zero
+  //n   = (n <= NOISE) ? 0 : (n - NOISE);             // Remove noise/hum
+  lvl = n;//((lvl * 7) + n) >> 3;    // "Dampened" reading (else looks twitchy)
  
   // Calculate bar height based on dynamic min/max levels (fixed point):
   height = TOP * (lvl - minLvlAvg) / (long)(maxLvlAvg - minLvlAvg);
@@ -721,9 +723,10 @@ void Vu3() {
   int n, height;
 
   n = analogRead(MIC_PIN);             // Raw reading from mic
-  n = abs(n - 512 - DC_OFFSET);        // Center on zero
-  n = (n <= NOISE) ? 0 : (n - NOISE);  // Remove noise/hum
-  lvl = ((lvl * 7) + n) >> 3;    // "Dampened" reading (else looks twitchy)
+  Serial.println(n);
+ // n = abs(n - 512 - DC_OFFSET);        // Center on zero
+  //n = (n <= NOISE) ? 0 : (n - NOISE);  // Remove noise/hum
+  lvl = n;//((lvl * 7) + n) >> 3;    // "Dampened" reading (else looks twitchy)
 
   // Calculate bar height based on dynamic min/max levels (fixed point):
   height = TOP * (lvl - minLvlAvg) / (long)(maxLvlAvg - minLvlAvg);
@@ -796,9 +799,10 @@ void Vu4() {
   int      n, height;
   
   n   = analogRead(MIC_PIN);                        // Raw reading from mic 
-  n   = abs(n - 512 - DC_OFFSET); // Center on zero
-  n   = (n <= NOISE) ? 0 : (n - NOISE);             // Remove noise/hum
-  lvl = ((lvl * 7) + n) >> 3;    // "Dampened" reading (else looks twitchy)
+  Serial.println(n);
+  //n   = abs(n - 512 - DC_OFFSET); // Center on zero
+  //n   = (n <= NOISE) ? 0 : (n - NOISE);             // Remove noise/hum
+  lvl = n;//((lvl * 7) + n) >> 3;    // "Dampened" reading (else looks twitchy)
  
   // Calculate bar height based on dynamic min/max levels (fixed point):
   height = TOP * (lvl - minLvlAvg) / (long)(maxLvlAvg - minLvlAvg);
@@ -871,9 +875,10 @@ void Vu5()
   int      n, height;
 
   n   = analogRead(MIC_PIN);                        // Raw reading from mic 
-  n   = abs(n - 512 - DC_OFFSET); // Center on zero
-  n   = (n <= NOISE) ? 0 : (n - NOISE);             // Remove noise/hum
-  lvl = ((lvl * 7) + n) >> 3;    // "Dampened" reading (else looks twitchy)
+  Serial.println(n);
+  //n   = abs(n - 512 - DC_OFFSET); // Center on zero
+ // n   = (n <= NOISE) ? 0 : (n - NOISE);             // Remove noise/hum
+  lvl = n;//((lvl * 7) + n) >> 3;    // "Dampened" reading (else looks twitchy)
 
   // Calculate bar height based on dynamic min/max levels (fixed point):
   height = TOP2 * (lvl - minLvlAvg) / (long)(maxLvlAvg - minLvlAvg);
@@ -966,9 +971,10 @@ void Vu6()
   int      n, height;
 
   n   = analogRead(MIC_PIN);                        // Raw reading from mic 
-  n   = abs(n - 512 - DC_OFFSET); // Center on zero
-  n   = (n <= NOISE) ? 0 : (n - NOISE);             // Remove noise/hum
-  lvl = ((lvl * 7) + n) >> 3;    // "Dampened" reading (else looks twitchy)
+  Serial.println(n);
+  //n   = abs(n - 512 - DC_OFFSET); // Center on zero
+ // n   = (n <= NOISE) ? 0 : (n - NOISE);             // Remove noise/hum
+  lvl = n;//((lvl * 7) + n) >> 3;    // "Dampened" reading (else looks twitchy)
 
   // Calculate bar height based on dynamic min/max levels (fixed point):
   height = TOP2 * (lvl - minLvlAvg) / (long)(maxLvlAvg - minLvlAvg);
@@ -1123,9 +1129,10 @@ int calculateIntensity() {
   int      intensity;
   
   reading   = analogRead(MIC_PIN);                        // Raw reading from mic 
-  reading   = abs(reading - 512 - DC_OFFSET); // Center on zero
-  reading   = (reading <= NOISE) ? 0 : (reading - NOISE);             // Remove noise/hum
-  lvl = ((lvl * 7) + reading) >> 3;    // "Dampened" reading (else looks twitchy)
+  Serial.println(reading);
+  //reading   = abs(reading - 512 - DC_OFFSET); // Center on zero
+  //reading   = (reading <= NOISE) ? 0 : (reading - NOISE);             // Remove noise/hum
+  lvl =reading;// ((lvl * 7) + reading) >> 3;    // "Dampened" reading (else looks twitchy)
 
   // Calculate bar height based on dynamic min/max levels (fixed point):
   intensity = DRAW_MAX * (lvl - minLvlAvg) / (long)(maxLvlAvg - minLvlAvg);
@@ -1284,7 +1291,7 @@ void vu9() {
 
 void soundble() {                                            // Quick and dirty sampling of the microphone.
   
-  int tmp = analogRead(MIC_PIN) - 512 - DC_OFFSET;
+  int tmp = analogRead(MIC_PIN);
   sample = abs(tmp);
   
 }  // soundmems()
@@ -1333,6 +1340,7 @@ void soundtun() {
 
   int n;
   n = analogRead(MIC_PIN);                                    // Raw reading from mic
+  Serial.println(n);
   n = qsuba(abs(n-512), 10);                                  // Center on zero and get rid of low level noise
   CRGB newcolour = ColorFromPalette(currentPalette, constrain(n,0,255), constrain(n,0,255), currentBlending);
   nblend(leds[0], newcolour, 128);
@@ -1365,7 +1373,7 @@ void vu11() {
 void soundrip() {                                            // Rolling average counter - means we don't have to go through an array each time.
 
   newtime = millis();
-  int tmp = analogRead(MIC_PIN) - 512;
+  int tmp = analogRead(MIC_PIN) ;
   sample = abs(tmp);
 
   int potin = map(analogRead(POT_PIN), 0, 1023, 0, 60);
@@ -1473,7 +1481,7 @@ void vu12() {
 void soundripped() {                                            // Rolling average counter - means we don't have to go through an array each time.
 
   newtime = millis();
-  int tmp = analogRead(MIC_PIN) - 512;
+  int tmp = analogRead(MIC_PIN) ;
   sample = abs(tmp);
 
   int potin = map(analogRead(POT_PIN), 0, 1023, 0, 60);
